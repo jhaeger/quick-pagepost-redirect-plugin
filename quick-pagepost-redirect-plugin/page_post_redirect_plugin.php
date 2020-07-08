@@ -193,7 +193,7 @@ class quick_page_post_reds {
 	
 	function qppr_delete_all_settings_ajax(){
 		check_ajax_referer( 'qppr_ajax_delete_ALL_verify', 'security', true );
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( 'activate_plugins' ) ){
 			global $wpdb;
 			//delete Individual
 			$sql = "DELETE FROM {$wpdb->postmeta} WHERE `meta_key` IN ( '_pprredirect_meta_secs','qppr_meta_trigger','qppr_meta_load','qppr_meta_content','qppr_meta_append','_pprredirect_active','_pprredirect_rewritelink','_pprredirect_newwindow','_pprredirect_relnofollow','_pprredirect_type','_pprredirect_url');";
@@ -232,7 +232,7 @@ class quick_page_post_reds {
 	}
 	function qppr_delete_all_ireds_ajax(){
 		check_ajax_referer( 'qppr_ajax_delete_ALL_verify', 'security', true );
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( 'activate_plugins' ) ){
 			global $wpdb;
 			$sql = "DELETE FROM {$wpdb->postmeta} WHERE `meta_key` IN ( '_pprredirect_meta_secs','qppr_meta_trigger','qppr_meta_load','qppr_meta_content','qppr_meta_append','_pprredirect_active','_pprredirect_rewritelink','_pprredirect_newwindow','_pprredirect_relnofollow','_pprredirect_type','_pprredirect_url');";
 			$wpdb->query($sql);
@@ -246,7 +246,7 @@ class quick_page_post_reds {
 	
 	function qppr_delete_all_qreds_ajax(){
 		check_ajax_referer( 'qppr_ajax_delete_ALL_verify', 'security', true );
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( 'activate_plugins' ) ){
 			delete_option( 'quickppr_redirects' );
 			delete_option( 'quickppr_redirects_meta' );
 			$this->qppr_try_to_clear_cache_plugins();
@@ -1503,7 +1503,7 @@ class quick_page_post_reds {
 		global $wp, $wpdb;
 		$this->ppr_all_redir_array	= $this->get_main_array();
 		$this->pprptypes_ok	= get_option( 'ppr_qpprptypeok', array() );
-		if( current_user_can( 'manage_options' ) ){
+		if( current_user_can( 'activate_plugins' ) ){
 			if ( isset( $_GET['action'] ) && $_GET['action'] == 'export-quick-redirects-file' ) {
 				$newQPPR_Array = array();
 				check_admin_referer( 'export-redirects-qppr' );
@@ -1815,7 +1815,7 @@ class quick_page_post_reds {
 				return $post_id;
 		}
 		// check allowed to editing
-		if ( !current_user_can('edit_posts', $post_id))
+		if ( !current_user_can('activate_plugins', $post_id))
 			return $post_id;
 			
 		if(!empty($my_meta_data))
@@ -2434,9 +2434,9 @@ function qppr_delete_individual_redirect( $post_id = 0){
 		return false;
 	$ptype = get_post_type( $post_id );
 	if( $ptype != 'post' )
-		$ok = current_user_can( 'edit_pages' );
+		$ok = current_user_can( 'activate_plugins' );
 	else
-		$ok = current_user_can( 'edit_posts' );
+		$ok = current_user_can( 'activate_plugins' );
 		
 	if( $ok ){ 
 		// delete meta fields
