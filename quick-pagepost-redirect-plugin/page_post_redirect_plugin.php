@@ -418,10 +418,12 @@ class quick_page_post_reds {
 			}
 		}
 		// now save data back to the db options
-		update_option('quickppr_redirects', $curRedirects);
-		update_option('quickppr_redirects_meta', $curMeta);
-		$this->qppr_try_to_clear_cache_plugins();
-		echo 'saved';
+		if ( current_user_can('activate_plugins') ) {
+			update_option('quickppr_redirects', $curRedirects);
+			update_option('quickppr_redirects_meta', $curMeta);
+			$this->qppr_try_to_clear_cache_plugins();
+			echo 'saved';
+		}
 		exit;
 	}
 	
