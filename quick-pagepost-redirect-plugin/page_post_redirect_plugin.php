@@ -5,6 +5,8 @@ Plugin URI: https://github.com/jhaeger/quick-pagepost-redirect-plugin
 Description: Redirect Pages, Posts or Custom Post Types to another location quickly (for internal or external URLs). Includes individual post/page options, redirects for Custom Post types, non-existant 301 Quick Redirects (helpful for sites converted to WordPress), New Window functionality, and rel=nofollow functionality.
 Author: anadnet
 Author URI: https://greyleafmedia.com
+GitHub Plugin URI: jhaeger/quick-pagepost-redirect-plugin
+GitHub Plugin URI: https://github.com/jhaeger/quick-pagepost-redirect-plugin
 Donate link: 
 Version: 5.1.10
 Text Domain: quick-pagepost-redirect-plugin
